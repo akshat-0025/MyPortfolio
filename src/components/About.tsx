@@ -123,7 +123,7 @@ export default function About() {
                 className="text-textSecondary font-sans font-light leading-relaxed text-sm sm:text-base"
               >
                 As a Bachelor of Computer Applications (BCA) graduate from{" "}
-                <span className="text-textPrimary font-medium">National PG College</span>, I've dedicated myself to understanding the full architectural stack of modern tech applications. My path revolves around combining strict programming methodologies with emerging trends.
+                <span className="text-textPrimary font-medium">National PG College, Lucknow</span>, I've dedicated myself to understanding the full architectural stack of modern tech applications. My path revolves around combining strict programming methodologies with emerging trends.
               </motion.p>
 
               <motion.p

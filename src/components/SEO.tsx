@@ -24,7 +24,7 @@ export default function SEO({
     "AgroGuardian"
   ],
   image = "/profile-placeholder.png",
-  url = "https://akshatsharma.dev" // Placeholder URL
+  url = "https://akshatsharmaa.vercel.app"
 }: SEOProps) {
   useEffect(() => {
     // 1. Title
@@ -91,9 +91,9 @@ export default function SEO({
         "name": "National PG College"
       },
       "sameAs": [
-        "https://github.com/akshatsharma", // Placeholder
-        "https://linkedin.com/in/akshatsharma", // Placeholder
-        "https://twitter.com/akshatsharma" // Placeholder
+        "https://github.com/akshat-0025",
+        "https://linkedin.com/in/akshat-sharma0025",
+        "https://x.com/akshat_0025"
       ]
     };
 

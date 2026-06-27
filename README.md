@@ -21,7 +21,7 @@ This website is designed with a premium, minimalist startup-founder aesthetic re
 3. **Custom Trailing Cursor**: Desktop-only custom mouse ring trailing effect using spring physics that reacts on interactive hover states.
 4. **Entrance Loader Screen**: Sophisticated character-by-character branding animations.
 5. **Interactive Skill Tabs**: Categorized technical stacks (Frontend, Backend, Programming, Tools) displayed in clean minimalist grids.
-6. **Project Showcase**: Display dashboard visual mockups for *Smart Waste Management* and *AgroGuardian* with category tags.
+6. **Project Showcase**: Showcase 4 featured projects (*Smart Waste Management*, *AgroGuardian*, *National PG College Website*, and *Duo Secure Chat App*) with group/solo type labels and custom repository mapping.
 7. **Formspree Contact Form**: Fully validated fields with canvas-confetti success alerts linked to the Formspree endpoint.
 
 ---

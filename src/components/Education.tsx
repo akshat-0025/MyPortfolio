@@ -16,8 +16,8 @@ const educationHistory: EducationItem[] = [
     degree: "Bachelor of Computer Applications (BCA)",
     institution: "National PG College",
     location: "Lucknow, Uttar Pradesh, India",
-    period: "2022 - 2025",
-    score: "First Division",
+    period: "2023 - 2026",
+    score: "7.3 FGPA with grade B+",
     coursework: [
       "Web Technologies (HTML, CSS, JS)",
       "Database Management Systems (SQL)",

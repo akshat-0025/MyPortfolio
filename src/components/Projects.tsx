@@ -8,40 +8,71 @@ interface Project {
   image: string;
   technologies: string[];
   github: string;
-  live: string;
-  category: "iot" | "ai" | "web"[];
+  githubLabel: string;
+  live?: string;
+  category: string[];
+  type: "Group Project" | "Solo Project";
 }
 
 const projects: Project[] = [
   {
     title: "Smart Waste Management System",
     description:
-      "An IoT-based smart waste management solution that monitors bin levels, improves waste collection efficiency, and promotes cleaner urban environments through intelligent monitoring.",
+      "An IoT-enabled smart bin system featuring automatic lid-opening, level monitoring, and live data telemetry on a MERN-based web dashboard. Developed as a collaborative group project.",
     image: "/smart-waste-mockup.png",
-    technologies: ["IoT", "Sensors", "Web Dashboard", "MongoDB", "Node.js"],
-    github: "https://github.com/akshatsharma/smart-waste-management",
-    live: "https://smart-waste.akshatsharma.dev",
-    category: ["iot", "web"] as any
+    technologies: ["IoT", "Sensors", "Node.js", "Express.js", "MongoDB", "C++"],
+    github: "https://github.com/kr254na/Smart-Waste-Management",
+    githubLabel: "Teammate's Repo",
+    category: ["iot", "web"],
+    type: "Group Project"
   },
   {
     title: "AgroGuardian",
     description:
-      "An AI-powered smart farming ecosystem designed to help farmers optimize irrigation, monitor environmental conditions, improve crop productivity, and make data-driven decisions.",
+      "An AI-powered smart farming platform designed to monitor soil parameters, weather conditions, and provide crop disease analysis using a React client and a Spring Boot backend. Developed as a collaborative group project.",
     image: "/agroguardian-mockup.png",
-    technologies: ["AI", "IoT", "MERN Stack", "Analytics", "Real-time Monitoring"],
-    github: "https://github.com/akshatsharma/agro-guardian",
-    live: "https://agroguardian.akshatsharma.dev",
-    category: ["ai", "iot", "web"] as any
+    technologies: ["Spring Boot", "React.js", "MySQL", "IoT", "Python (AI)"],
+    github: "https://github.com/kr254na/Agro-Smart-Frontend",
+    githubLabel: "Teammate's Repo",
+    live: "https://agrofy.vercel.app",
+    category: ["ai", "iot", "web"],
+    type: "Group Project"
+  },
+  {
+    title: "National PG College Website",
+    description:
+      "A responsive portal designed for efficient management of academic information, notifications, and student resources, featuring custom navigation structures. Developed as a collaborative group project.",
+    image: "/npgc-website.png",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Python (Chatbot)"],
+    github: "https://github.com/kr254na/NPGC---Website",
+    githubLabel: "Teammate's Repo",
+    live: "https://npgc.vercel.app",
+    category: ["web"],
+    type: "Group Project"
+  },
+  {
+    title: "Duo Secure Chat App",
+    description:
+      "A real-time, secure two-party communication platform featuring encrypted instant messaging routing, Socket.io data synchronization, and JWT-based authentication. Developed as a solo project.",
+    image: "/duo-securechat.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
+    github: "https://github.com/akshat-0025/chatapp",
+    githubLabel: "Personal Repo",
+    live: "https://chatapp-2t91.onrender.com",
+    category: ["web"],
+    type: "Solo Project"
   },
   {
     title: "Digital Architect Portfolio",
     description:
-      "A premium personal portfolio website showcasing projects, design systems, future-facing interests, and technical capabilities using high-end interactions.",
-    image: "/profile-placeholder.png", // reusing avatar image or general placeholder
+      "A premium, highly interactive personal portfolio website showcasing professional virtual internships, projects, and event presentations using advanced animations. Developed as a solo project.",
+    image: "/portfolio-mockup.png",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    github: "https://github.com/akshatsharma/portfolio",
-    live: "https://akshatsharma.dev",
-    category: ["web"] as any
+    github: "https://github.com/akshat-0025/MyPortfolio",
+    githubLabel: "Personal Repo",
+    live: "https://akshatsharmaa.vercel.app",
+    category: ["web"],
+    type: "Solo Project"
   }
 ];
 
@@ -50,10 +81,7 @@ export default function Projects() {
 
   const filteredProjects = projects.filter((p) => {
     if (filter === "all") return true;
-    if (Array.isArray(p.category)) {
-      return (p.category as string[]).includes(filter);
-    }
-    return p.category === filter;
+    return p.category.includes(filter);
   });
 
   return (
@@ -111,7 +139,7 @@ export default function Projects() {
         {/* Project Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -136,8 +164,15 @@ export default function Projects() {
                     {/* Shadow overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-bgPrimary/60 via-transparent to-transparent" />
                     
-                    {/* Floating top category badge */}
-                    <div className="absolute top-4 right-4 p-1.5 rounded-full bg-bgSecondary/80 border border-accentGold/20 text-accentGold backdrop-blur-sm">
+                    {/* Floating top category badge and project type badge */}
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <span className="px-2.5 py-1 rounded bg-bgSecondary/90 border border-accentGold/20 text-accentGold text-[9px] font-heading font-semibold uppercase tracking-widest backdrop-blur-sm shadow-md">
+                        {project.type}
+                      </span>
+                    </div>
+
+                    {/* Category Icon */}
+                    <div className="absolute top-4 left-4 p-1.5 rounded-full bg-bgSecondary/85 border border-accentGold/20 text-accentGold backdrop-blur-sm">
                       <Cpu size={14} />
                     </div>
                   </div>
@@ -178,22 +213,24 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center space-x-2 border border-accentGold/20 hover:border-accentGold/50 py-2.5 rounded text-xs font-heading font-medium uppercase tracking-widest text-textSecondary hover:text-textPrimary transition-all duration-300 focus:outline-none"
+                    className={`${project.live ? "flex-1" : "w-full"} inline-flex items-center justify-center space-x-2 border border-accentGold/20 hover:border-accentGold/50 py-2.5 rounded text-xs font-heading font-medium uppercase tracking-widest text-textSecondary hover:text-textPrimary transition-all duration-300 focus:outline-none`}
                   >
                     <svg className="w-3.5 h-3.5 text-accentGold fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    <span>Source</span>
+                    <span>{project.githubLabel}</span>
                   </a>
 
                   {/* Live Demo Link */}
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center space-x-2 bg-accentGold hover:bg-transparent border border-accentGold py-2.5 rounded text-xs font-heading font-semibold uppercase tracking-widest text-bgPrimary hover:text-accentGold transition-all duration-300 focus:outline-none"
-                  >
-                    <span>Launch</span>
-                    <ExternalLink size={12} />
-                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 inline-flex items-center justify-center space-x-2 bg-accentGold hover:bg-transparent border border-accentGold py-2.5 rounded text-xs font-heading font-semibold uppercase tracking-widest text-bgPrimary hover:text-accentGold transition-all duration-300 focus:outline-none"
+                    >
+                      <span>Launch</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

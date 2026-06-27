@@ -226,7 +226,7 @@ export default function Hero() {
           {/* CTA Buttons Group */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-16"
           >
             {/* View Projects Button */}
             <button
@@ -239,7 +239,7 @@ export default function Hero() {
 
             {/* Download Resume Button */}
             <a
-              href="/resume-placeholder.pdf"
+              href="/Resume.pdf"
               download="Akshat_Sharma_Resume.pdf"
               className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-bgSecondary hover:bg-bgSecondary/60 border border-accentGold/20 px-8 py-3.5 rounded font-heading font-semibold text-sm tracking-wider uppercase text-textPrimary transition-all duration-300 hover:border-accentGold/60 focus:outline-none"
             >

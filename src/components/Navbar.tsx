@@ -13,6 +13,8 @@ const navItems: NavItem[] = [
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
+  { name: "Certifications", href: "#certifications" },
+  { name: "Hackathons", href: "#hackathons" },
   { name: "Contact", href: "#contact" }
 ];
 
@@ -61,10 +63,14 @@ export default function Navbar() {
       const elementPosition = elementRect - bodyRect;
       const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      // Wrap in setTimeout to ensure it scrolls on mobile screens 
+      // after the tap/focus event sequence and menu toggle finishes.
+      setTimeout(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }, 100);
     }
   };
 
